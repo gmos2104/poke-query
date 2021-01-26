@@ -9,30 +9,35 @@ Pre-Requisites
 ==============
 
 - docker
+- docker-compose
 
 ======
 Set up
 ======
 
-#. Create a ``.env`` file.
+#. Create a ``.env`` file from template example:
 
    ``cp .env-template .env``
 
-#. Build the docker image:
+#. Change `REDIS_HOST` in `.env` from `localhost` to `redis`
 
-   ``docker build -t poke-query:development .``
+#. Build the app image and start services:
+
+   ``docker-compose up -d``
 
 ===================
 Running the Project
 ===================
 
-Start container:
+Start containers:
 
-  ``./run-docker.sh``
+  ``docker-compose start -d``
 
 ==============
-Other Commands
+Basic Commands
 ==============
 
-- Stop container: ``docker stop poke-query``
-- View container logs: ``docker logs poke-query``
+- Start services: ``docker-compose start``
+- Stop services: ``docker-compose stop``
+- Check service logs: ``docker-compose logs -f <service_name>``
+- Build app image: ``docker-compose build``

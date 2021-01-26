@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  app:
+    image: poke-query:development
+    build:
+      context: .
+    ports:
+      - '5000:5000'
+    volumes:
+      - '.:/home/flask/src'
+    depends_on:
+      - redis
+  redis:
+    image: redis:6
+    ports:
+      - '6379:6379'

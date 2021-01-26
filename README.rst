@@ -6,6 +6,12 @@ API that adds query improvements to the great `PokéApi <https://pokeapi.co>`_
 
 This app is part of a coding challenge.
 
+==============
+Pre-Requisites
+==============
+
+- Have a running Redis instance.
+
 ======
 Set Up
 ======
@@ -22,7 +28,7 @@ Set Up
 
   ``pip install -r requirements/development.txt``
 
-4. Create a ``.env`` file.
+4. Create a ``.env`` file from template example:
 
    ``cp .env-template .env``
 
