@@ -1,17 +1,23 @@
-from flask import jsonify, request, Response
+from flask import abort, jsonify, request, Response
 
 from api import app
 from api.constants import POKEAPI_BASE_URL
-from api.service import get_pokemons
+from api.service import get_pokemons, get_pokemon_data
 from api.utils import extract_id, get_sprite_url
+
+
+def make_error_response(status_code: int, extra_data: dict) -> Response:
+    response = jsonify(extra_data)
+    response.status_code = status_code
+
+    return response
 
 
 @app.route("/", methods=["GET"])
 def pokemon_search() -> Response:
     pokemons = get_pokemons()
 
-    q = request.args.get("q")
-    if q:
+    if q := request.args.get("q"):
         pokemons = [p for p in pokemons if q.lower() in p["name"].lower()]
 
     count = len(pokemons)
@@ -41,4 +47,12 @@ def pokemon_search() -> Response:
 
 @app.route("/<name>", methods=["GET"])
 def pokemon_detail(name: str) -> Response:
-    return jsonify({"message": f"Stats for {name}"})
+    if data := get_pokemon_data(name):
+        return jsonify(data)
+
+    return make_error_response(
+        404,
+        {
+            "message": f"No Pokemon found with name {name}. Make sure you typed the name correctly."
+        },
+    )

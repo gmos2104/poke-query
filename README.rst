@@ -10,6 +10,7 @@ This app is part of a coding challenge.
 Pre-Requisites
 ==============
 
+- Python 3.8
 - Have a running Redis instance.
 
 ======
@@ -39,6 +40,10 @@ Running the Project
 Start the development server run:
 
   ``flask run``
+
+To run the tests:
+
+  ``python -m pytest``
 
 ======
 Docker

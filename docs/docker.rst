@@ -33,6 +33,10 @@ Start containers:
 
   ``docker-compose start -d``
 
+To run the tests:
+
+  ``docker-compose exec app python -m pytest``
+
 ==============
 Basic Commands
 ==============
