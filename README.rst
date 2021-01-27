@@ -6,6 +6,8 @@ API that adds query improvements to the great `PokéApi <https://pokeapi.co>`_
 
 This app is part of a coding challenge.
 
+See `Project Requirements <docs/requirements.rst>`_.
+
 ==============
 Pre-Requisites
 ==============
