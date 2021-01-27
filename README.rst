@@ -43,7 +43,7 @@ Start the development server run:
 
 To run the tests:
 
-  ``python -m pytest``
+  ``python -m pytest --cov=api``
 
 ======
 Docker

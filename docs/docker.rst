@@ -35,7 +35,7 @@ Start containers:
 
 To run the tests:
 
-  ``docker-compose exec app python -m pytest``
+  ``docker-compose exec app python -m pytest --cov=api``
 
 ==============
 Basic Commands

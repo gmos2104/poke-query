@@ -8,5 +8,6 @@ __pycache__/
 # virtualenv
 .venv
 
-# pytest files
+# test files
 .pytest_cache
+.coverage
