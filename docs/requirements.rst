@@ -25,3 +25,5 @@ Project Requirements
 - Propose an enhancement plan for the API's
 
 See `Notes <notes.rst>`_ for explanations on some of these points.
+
+See `Possible Enhancements <enhancements.rst>`_ for some ideas to improve the project.
