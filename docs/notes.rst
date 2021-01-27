@@ -6,6 +6,8 @@ Notes
 
 - Both endpoints save their results on a redis cache the first time they query a resource to avoid hitting the PokéAPI service many times.
 
+- Since I use the assignment expressions (with the walrus operator ``:=``) in various parts of the application the minimum Python version required to run it is 3.8
+
 - Code formatting is done using `black <https://github.com/psf/black>`_.
 
 - Testing is done using the `pytest <https://docs.pytest.org/en/stable/index.html>`_ with the coverage pluggin.
