@@ -1,4 +1,4 @@
-from flask import abort, jsonify, request, Response
+from flask import abort, jsonify, request, Response, render_template
 
 from api import app
 from api.constants import POKEAPI_BASE_URL
@@ -15,6 +15,27 @@ def make_error_response(status_code: int, extra_data: dict) -> Response:
 
 @app.route("/", methods=["GET"])
 def pokemon_search() -> Response:
+    """Pokémon list view.
+    ---
+    get:
+        description: Get pokémon names
+        parameters:
+        - in: query
+          name: q
+          required: false
+          description: filter results based on name
+        - in: query
+          name: offset
+          required: false
+        - in: query
+          name: limit
+          required: false
+        responses:
+            200:
+                content:
+                    application/json:
+                        schema: PokemonList
+    """
     pokemons = get_pokemons()
 
     if q := request.args.get("q"):
@@ -47,6 +68,24 @@ def pokemon_search() -> Response:
 
 @app.route("/<name>", methods=["GET"])
 def pokemon_detail(name: str) -> Response:
+    """Pokémon detail view.
+    ---
+    get:
+        description: Get Pokémon data
+        parameters:
+        - in: path
+          name: name
+          description: full pokémon name
+        responses:
+            200:
+                content:
+                    application/json:
+                        schema: PokemonData
+            404:
+                content:
+                    application/json:
+                        schema: ErrorData
+    """
     if data := get_pokemon_data(name):
         return jsonify(data)
 
@@ -56,3 +95,8 @@ def pokemon_detail(name: str) -> Response:
             "message": f"No Pokemon found with name {name}. Make sure you typed the name correctly."
         },
     )
+
+
+@app.route("/docs/", methods=["GET"])
+def swagger_docs():
+    return render_template("index.html")

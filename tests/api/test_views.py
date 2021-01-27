@@ -62,3 +62,8 @@ def test_pokemon_detail_incorrect_name(monkeypatch, client):
 
     response = client.get("/asd")
     assert response.status_code == 404
+
+
+def test_docs_page_loads(client):
+    response = client.get("/docs", follow_redirects=True)
+    assert b"Swagger UI" in response.data

@@ -11,3 +11,6 @@ __pycache__/
 # test files
 .pytest_cache
 .coverage
+
+# Swagger
+swagger.json
