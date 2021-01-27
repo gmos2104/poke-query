@@ -47,6 +47,14 @@ To run the tests:
 
   ``python -m pytest --cov=api``
 
+=============
+Documentation
+=============
+
+Aditional documentation can be found in the ``docs`` folder.
+
+Proyect also uses OpenAPI and Swagger UI to document the API's. The docs can be viewed in ``localhost:5000/docs/``
+
 ======
 Docker
 ======

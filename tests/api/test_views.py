@@ -1,15 +1,24 @@
 import json
 
 import pytest
+import redis
 
 from api import app, service
 from tests.api.fixtures.data import DATA_KEYS, POKEMON_LIST, POKEMON_DATA_CACHED
+from tests.api.mocks import MockRedis
 
 
 @pytest.fixture
 def client():
     with app.test_client() as client:
         yield client
+
+
+@pytest.fixture(autouse=True)
+def mock_redis_client(monkeypatch):
+    mock_redis_client = MockRedis()
+    monkeypatch.setattr(redis, "Redis", mock_redis_client)
+    return mock_redis_client
 
 
 def test_search_pokemon(monkeypatch, client):
